@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use LogicException;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use LogicException;
 
 /**
  * Class Book
@@ -39,7 +39,6 @@ class Book extends Model
         ]))->id;
     }
 
-
     public function reservations() : HasMany
     {
         return $this->hasMany(Reservation::class);
@@ -61,7 +60,7 @@ class Book extends Model
             ->first();
 
         if (is_null($reservation)) {
-           throw new LogicException("");
+            throw new LogicException("");
         }
 
         $reservation->update([

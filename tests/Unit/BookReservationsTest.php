@@ -2,13 +2,12 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use LogicException;
-use App\Models\User;
 use App\Models\Book;
 use App\Models\Reservation;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use LogicException;
+use Tests\TestCase;
 
 class BookReservationsTest extends TestCase
 {
@@ -54,8 +53,8 @@ class BookReservationsTest extends TestCase
         $user = User::factory()->create();
 
         $book->checkin($user);
-
     }
+
     /** @test */
     public function a_user_can_checkout_a_book_twice()
     {
