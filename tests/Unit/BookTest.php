@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Models\Book;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class BookTest extends TestCase
 {
@@ -16,6 +16,5 @@ class BookTest extends TestCase
         Book::factory()->create();
 
         $this->assertCount(1, Book::all());
-
     }
 }
