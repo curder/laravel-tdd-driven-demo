@@ -12,11 +12,11 @@ class BooksController extends Controller
         Book::create($this->validateRequest());
     }
 
-
     public function update(Book $book)
     {
         $book->update($this->validateRequest());
     }
+
     /**
      * @return array
      */

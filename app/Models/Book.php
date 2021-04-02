@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Book
- * @property integer id
+ * @property int id
  * @property string title
  * @property string author
  *

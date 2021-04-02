@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\Book;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 /**
  * Class BookReservationTest
@@ -56,14 +56,14 @@ class BookReservationTest extends TestCase
                'author' => 'Curder',
            ]);
 
-       $book = Book::first();
+        $book = Book::first();
 
-       $this->patch('/books/' . $book->id, [
+        $this->patch('/books/' . $book->id, [
            'title' => 'New Title',
            'author' => 'New Author',
        ]);
 
-       $this->assertEquals('New Title', $book->fresh()->title);
-       $this->assertEquals('New Author', $book->fresh()->author);
+        $this->assertEquals('New Title', $book->fresh()->title);
+        $this->assertEquals('New Author', $book->fresh()->author);
     }
 }
