@@ -1,5 +1,5 @@
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/curder/laravel-tdd-driven-demo/run-tests?label=tests)](https://github.com/curder/laravel-tdd-driven-demo/actions?query=workflow%3Arun-tests%3Amaster)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/curder/laravel-tdd-driven-demo/Check%20&%20fix%20styling?label=code%20style)](https://github.com/curder/laravel-tdd-driven-demo/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![GitHub Tests Action Status](https://github.com/curder/laravel-tdd-driven-demo/actions/workflows/run-test.yml/badge.svg)](https://github.com/curder/laravel-tdd-driven-demo/actions?query=run-test%3Amaster)
+[![GitHub Code Style Action Status](https://github.com/curder/laravel-tdd-driven-demo/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/curder/laravel-tdd-driven-demo/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
 
 ## 介绍
 
