@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string title
  * @property string author
  *
+ *
  * @package App\Models
  */
 class Book extends Model
@@ -20,4 +21,12 @@ class Book extends Model
     protected $fillable = [
         'title', 'author',
     ];
+
+    /**
+     * @return string
+     */
+    public function path() : string
+    {
+        return '/books/' . $this->id;
+    }
 }
