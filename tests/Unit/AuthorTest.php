@@ -11,10 +11,10 @@ class AuthorTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function a_date_of_birthday_is_nullable()
+    public function a_date_of_birthday_is_nullable() : void
     {
         Author::factory()->create(['dob' => null]);
 
-        $this->assertCount(1, Author::all());
+        self::assertCount(1, Author::all());
     }
 }

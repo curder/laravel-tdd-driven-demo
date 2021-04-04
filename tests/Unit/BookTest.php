@@ -11,10 +11,10 @@ class BookTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function a_book_id_is_recorded()
+    public function a_book_id_is_recorded() : void
     {
         Book::factory()->create();
 
-        $this->assertCount(1, Book::all());
+        self::assertCount(1, Book::all());
     }
 }

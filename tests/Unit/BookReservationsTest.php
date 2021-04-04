@@ -14,7 +14,7 @@ class BookReservationsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function a_book_can_be_checked_out()
+    public function a_book_can_be_checked_out() : void
     {
         $book = Book::factory()->create();
         $user = User::factory()->create();
@@ -22,14 +22,14 @@ class BookReservationsTest extends TestCase
         $book->checkout($user);
 
         $reservation = Reservation::first();
-        $this->assertCount(1, Reservation::all());
-        $this->assertEquals($user->id, $reservation->user_id);
-        $this->assertEquals($book->id, $reservation->book_id);
-        $this->assertEquals(now(), $reservation->checked_out_at);
+        self::assertCount(1, Reservation::all());
+        self::assertEquals($user->id, $reservation->user_id);
+        self::assertEquals($book->id, $reservation->book_id);
+        self::assertEquals(now(), $reservation->checked_out_at);
     }
 
     /** @test */
-    public function a_book_can_be_returned()
+    public function a_book_can_be_returned() : void
     {
         $book = Book::factory()->create();
         $user = User::factory()->create();
@@ -38,15 +38,15 @@ class BookReservationsTest extends TestCase
         $book->checkin($user);
 
         $reservation = Reservation::first();
-        $this->assertCount(1, Reservation::all());
-        $this->assertEquals($user->id, $reservation->user_id);
-        $this->assertEquals($book->id, $reservation->book_id);
-        $this->assertNotNull($reservation->checked_in_at);
-        $this->assertEquals(now(), $reservation->checked_in_at);
+        self::assertCount(1, Reservation::all());
+        self::assertEquals($user->id, $reservation->user_id);
+        self::assertEquals($book->id, $reservation->book_id);
+        self::assertNotNull($reservation->checked_in_at);
+        self::assertEquals(now(), $reservation->checked_in_at);
     }
 
     /** @test */
-    public function if_not_checked_out_exception_is_thrown()
+    public function if_not_checked_out_exception_is_thrown() : void
     {
         $this->expectException(LogicException::class);
         $book = Book::factory()->create();
@@ -56,7 +56,7 @@ class BookReservationsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_checkout_a_book_twice()
+    public function a_user_can_checkout_a_book_twice() : void
     {
         $book = Book::factory()->create();
         $user = User::factory()->create();
@@ -66,18 +66,18 @@ class BookReservationsTest extends TestCase
         $book->checkout($user);
 
         $reservation = Reservation::find(2);
-        $this->assertCount(2, Reservation::all());
-        $this->assertEquals($user->id, $reservation->user_id);
-        $this->assertEquals($book->id, $reservation->book_id);
-        $this->assertNull($reservation->checked_in_at);
-        $this->assertEquals(now(), $reservation->checked_out_at);
+        self::assertCount(2, Reservation::all());
+        self::assertEquals($user->id, $reservation->user_id);
+        self::assertEquals($book->id, $reservation->book_id);
+        self::assertNull($reservation->checked_in_at);
+        self::assertEquals(now(), $reservation->checked_out_at);
 
         $book->checkin($user);
 
-        $this->assertCount(2, Reservation::all());
-        $this->assertEquals($user->id, $reservation->fresh()->user_id);
-        $this->assertEquals($book->id, $reservation->fresh()->book_id);
-        $this->assertNotNull($reservation->fresh()->checked_in_at);
-        $this->assertEquals(now(), $reservation->fresh()->checked_in_at);
+        self::assertCount(2, Reservation::all());
+        self::assertEquals($user->id, $reservation->fresh()->user_id);
+        self::assertEquals($book->id, $reservation->fresh()->book_id);
+        self::assertNotNull($reservation->fresh()->checked_in_at);
+        self::assertEquals(now(), $reservation->fresh()->checked_in_at);
     }
 }

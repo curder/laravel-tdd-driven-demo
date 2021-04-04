@@ -12,7 +12,7 @@ class AuthorManagementTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function an_author_can_be_created()
+    public function an_author_can_be_created() : void
     {
         $this->post('/author', [
            'name' => 'Author Name',
@@ -20,9 +20,9 @@ class AuthorManagementTest extends TestCase
         ]);
 
         $authors = Author::all();
-        $this->assertCount(1, $authors);
+        self::assertCount(1, $authors);
 
-        $this->assertInstanceOf(Carbon::class, $authors->first()->dob);
-        $this->assertEquals('1988/14/05', $authors->first()->dob->format('Y/d/m'));
+        self::assertInstanceOf(Carbon::class, $authors->first()->dob);
+        self::assertEquals('1988/14/05', $authors->first()->dob->format('Y/d/m'));
     }
 }
