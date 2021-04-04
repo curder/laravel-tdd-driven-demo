@@ -9,12 +9,19 @@ use LogicException;
 
 /**
  * Class Book
- * @property int id
- * @property string title
- * @property string author
  *
+ * @property integer id
+ * @property string title
+ * @property integer author_id
  *
  * @package App\Models
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Reservation[] $reservations
+ * @property-read int|null $reservations_count
+ * @method static \Database\Factories\BookFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Book newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Book newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Book query()
+ * @mixin \Eloquent
  */
 class Book extends Model
 {
@@ -32,7 +39,7 @@ class Book extends Model
         return '/books/' . $this->id;
     }
 
-    public function setAuthorIdAttribute($author)
+    public function setAuthorIdAttribute($author) : void
     {
         $this->attributes['author_id'] = (Author::firstOrCreate([
             'name' => $author,
@@ -44,7 +51,7 @@ class Book extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    public function checkout(User $user)
+    public function checkout(User $user) : void
     {
         $this->reservations()->create([
            'user_id' => $user->id,
@@ -52,7 +59,7 @@ class Book extends Model
         ]);
     }
 
-    public function checkin(User $user)
+    public function checkin(User $user) : void
     {
         $reservation = $this->reservations()->where('user_id', $user->id)
             ->whereNotNull('checked_out_at')
