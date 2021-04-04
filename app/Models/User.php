@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 /**
  * App\Models\User
  *
- * @property integer id
+ * @property int id
  *
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count

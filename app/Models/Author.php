@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\Author
  *
- * @property integer id
+ * @property int id
  *
  * @method static \Database\Factories\AuthorFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Author newModelQuery()

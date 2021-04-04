@@ -10,9 +10,9 @@ use LogicException;
 /**
  * Class Book
  *
- * @property integer id
+ * @property int id
  * @property string title
- * @property integer author_id
+ * @property int author_id
  *
  * @package App\Models
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Reservation[] $reservations
