@@ -2,13 +2,12 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\Book;
-use App\Models\User;
 use App\Models\Reservation;
-use Illuminate\Foundation\Testing\WithFaker;
-use Symfony\Component\HttpFoundation\Response;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
 
 class BookCheckoutTest extends TestCase
 {
@@ -96,7 +95,6 @@ class BookCheckoutTest extends TestCase
         self::assertCount(0, Reservation::all());
     }
 
-
     /** @test */
     public function a_404_is_thrown_if_a_book_is_not_checked_out_first(): void
     {
@@ -111,6 +109,4 @@ class BookCheckoutTest extends TestCase
 
         self::assertCount(0, Reservation::all());
     }
-
-
 }
