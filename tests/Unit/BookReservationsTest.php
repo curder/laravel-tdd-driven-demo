@@ -25,7 +25,7 @@ class BookReservationsTest extends TestCase
         self::assertCount(1, Reservation::all());
         self::assertEquals($user->id, $reservation->user_id);
         self::assertEquals($book->id, $reservation->book_id);
-        self::assertEquals(now(), $reservation->checked_out_at);
+        self::assertEquals(now()->format('Y-m-d H:i:s'), $reservation->checked_out_at);
     }
 
     /** @test */
@@ -42,7 +42,7 @@ class BookReservationsTest extends TestCase
         self::assertEquals($user->id, $reservation->user_id);
         self::assertEquals($book->id, $reservation->book_id);
         self::assertNotNull($reservation->checked_in_at);
-        self::assertEquals(now(), $reservation->checked_in_at);
+        self::assertEquals(now()->format('Y-m-d H:i:s'), $reservation->checked_in_at);
     }
 
     /** @test */
@@ -70,7 +70,7 @@ class BookReservationsTest extends TestCase
         self::assertEquals($user->id, $reservation->user_id);
         self::assertEquals($book->id, $reservation->book_id);
         self::assertNull($reservation->checked_in_at);
-        self::assertEquals(now(), $reservation->checked_out_at);
+        self::assertEquals(now()->format('Y-m-d H:i:s'), $reservation->checked_out_at);
 
         $book->checkin($user);
 
@@ -78,6 +78,6 @@ class BookReservationsTest extends TestCase
         self::assertEquals($user->id, $reservation->fresh()->user_id);
         self::assertEquals($book->id, $reservation->fresh()->book_id);
         self::assertNotNull($reservation->fresh()->checked_in_at);
-        self::assertEquals(now(), $reservation->fresh()->checked_in_at);
+        self::assertEquals(now()->format('Y-m-d H:i:s'), $reservation->fresh()->checked_in_at);
     }
 }

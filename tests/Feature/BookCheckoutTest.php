@@ -27,7 +27,7 @@ class BookCheckoutTest extends TestCase
         self::assertCount(1, Reservation::all());
         self::assertEquals($user->id, $reservation->user_id);
         self::assertEquals($book->id, $reservation->book_id);
-        self::assertEquals(now(), $reservation->checked_out_at);
+        self::assertEquals(now()->format('Y-m-d H:i:s'), $reservation->checked_out_at);
     }
 
     /** @test */
@@ -65,8 +65,8 @@ class BookCheckoutTest extends TestCase
         self::assertCount(1, Reservation::all());
         self::assertEquals($user->id, $reservation->user_id);
         self::assertEquals($book->id, $reservation->book_id);
-        self::assertEquals(now(), $reservation->checked_out_at);
-        self::assertEquals(now(), $reservation->checked_in_at);
+        self::assertEquals(now()->format('Y-m-d H:i:s'), $reservation->checked_out_at);
+        self::assertEquals(now()->format('Y-m-d H:i:s'), $reservation->checked_in_at);
     }
 
     /** @test */
